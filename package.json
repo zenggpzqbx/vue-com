@@ -1,0 +1,36 @@
+{
+  "name": "@vue3/vue-com",
+  "version": "1.0.0",
+  "description": "this is a Vue3 components Library",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["vue3", "components", "library"],
+  "files": ["dist"],
+  "module": "dist/es/index.js",
+  "main": "dist/umd/index.umd.cjs",
+  "exports": {
+    ".":{
+      "import": "./dist/es/index.js",
+      "require": "./dist/umd/index.umd.cjs"
+    },
+    "./style.css": {
+      "import": "./dist/es/style.css",
+      "require": "./dist/umd/style.css"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:lib": "pnpm  build:es && pnpm  build:umd",
+    "build:es": "vite build --config vite.config.es.js",
+    "build:umd": "vite build --config vite.config.umd.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2",
+    "vite": "^5.0.8"
+  }
+}
