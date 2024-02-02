@@ -1,7 +1,12 @@
 {
   "name": "@zqbx/vue-com",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "this is a Vue3 components Library",
+  "homepage": "https://github.com/zenggpzqbx/vue-com",
+  "repository": "https://github.com/zenggpzqbx/vue-com",
+  "bugs": {
+    "url": "https://github.com/zenggpzqbx/vue-com/issues"
+  },
   "type": "module",
   "license": "MIT",
   "keywords": ["vue3", "components", "library"],
