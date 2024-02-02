@@ -1,7 +1,60 @@
 # 教程
 
 这是一个适用于vue和vite的一个项目。其中的组件及指令基于项目功能点抽象而来。
+## 引入方式
+### 导入方式
+```ecmascript 6
+import VueCom from '@zqbx/vue-com'
+import '@zqbx/vue-com/style.css'
+app.use(VueCom)
+```
+### UMD方式
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Change on Boundary Approach</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./dist/umd/zgp-ui.umd.cjs"></script>
+    <link rel="stylesheet" href="./dist//umd/style.css">
+    <style>
+        #app {
+            width: 800px;
+            height: 800px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app"></div>
+<script>
+    const { createApp, ref } = Vue
+
+    const app = createApp({
+        setup() {
+            const message = ref('Hello vue!')
+            return {
+                message
+            }
+        },
+        template: ``
+    })
+    app.use(VueCom,{
+        title:'弹出框',
+        dialog_style:{
+            parent:'width:600px',
+            header:'background-color: #bbb;',
+            content:'background-color: #f0f0f0;margin:8px;'
+        }})
+    app.mount('#app')
+</script>
+</body>
+
+</html>
+```
 ## 组件
 
 ### 对话框PopupDialog
