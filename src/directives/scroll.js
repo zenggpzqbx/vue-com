@@ -1,6 +1,7 @@
 export default {
     mounted(el, binding) {
         el.style.cursor = 'pointer'
+        el.style.overflow = 'auto'
         let start_x, start_y, diff_x, diff_y, start_scroll_left, start_scroll_Top
         function mouseDownEvent(e){
             start_x = e.clientX
