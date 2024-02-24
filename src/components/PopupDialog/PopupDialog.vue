@@ -7,7 +7,7 @@
     cstyle:{
       type:Object,
       default(){
-        return {parent:'', header:'background-color:blue;', content:''}
+        return {parent:{}, header: {}, content:{}}
       }
     }
   })
@@ -19,7 +19,7 @@
   <div id="container" v-drag :style="cstyle.parent">
     <div class="header" :style="cstyle.header">
       <div>{{ title }}</div>
-<!--      <img src="../../assets/popupClose.svg" alt="关闭" @click="$emit('close')">-->
+      <img src="../../assets/close.svg" alt="关闭" @click="$emit('close')">
     </div>
     <div class="content" :style="cstyle.content">
       <slot></slot>
@@ -35,8 +35,8 @@
 }
 
 #container {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 500px;
   position: fixed;
   z-index: 3000;
   left: 100px;
@@ -44,6 +44,7 @@
   background-color: rgba(136, 136, 136, 0.1);
 
   .header {
+    width: 100%;
     height: 30px;
     background-color: #979ef6;
     display: flex;
@@ -64,7 +65,7 @@
   }
   .content{
     width: 100%;
-
+    height: 500px;
   }
 }
 </style>
