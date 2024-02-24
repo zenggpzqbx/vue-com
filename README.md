@@ -44,7 +44,7 @@ app.use(VueCom)
     })
     app.use(VueCom,{
         title:'弹出框',
-        dialog_style:{
+        cstyle:{
             parent:'width:600px',
             header:'background-color: #bbb;',
             content:'background-color: #f0f0f0;margin:8px;'
@@ -60,14 +60,16 @@ app.use(VueCom)
 ### 对话框PopupDialog
 ```textmate
 引入方式：<PopupDialog></PopupDialog>
+增加关闭按钮
 属性：title:对话框标题
-属性： dialog_style:接受一个对象，{parent:'', header:'', content:''}
+属性： cstyle:接受一个对象，{parent:'', header:'', content:''},这个属性可以在全局注册的时候指定，也可以不写。原有报错已修复。
 ```
 
 ### 指令
 #### contextmenu_pos
 ```textmate
-接受一个对象参数：{left, top}， 确定弹出框的位置，同时限制它不超出屏幕
+已删除。
+接受一个对象参数：{left, top}， 确定弹出框的位置，同时限制它不超出屏幕，这个指令还有问题没有修改完成，慎用。
 ```
 #### drag
 ```textmate
