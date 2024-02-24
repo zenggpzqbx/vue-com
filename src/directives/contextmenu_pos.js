@@ -1,8 +1,8 @@
 export default {
-    mounted(el, binding) {
+    updatePosition(el,binding){
         let maxLeft = document.documentElement.offsetWidth - el.offsetWidth,
             maxTop = document.documentElement.offsetHeight -  el.offsetHeight,
-            left = binding.value.left, top = binding.value.top;
+            left = binding.arg.left, top = binding.arg.top;
         if (left <= 0){
             left = 0
         }
@@ -15,7 +15,13 @@ export default {
         if (top >= maxTop){
             top = maxTop
         }
-        el.style.left = left + 'px'
-        el.style.top = top + 'px'
+        el.style.left = binding.arg.left + 'px'
+        el.style.top = binding.arg.top + 'px'
+    },
+    mounted(el, binding) {
+        this.updatePosition(el, binding)
+    },
+    updated(el, binding, vnode, prevVnode) {
+        this.updatePosition(el, binding)
     },
 }
