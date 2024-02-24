@@ -4,7 +4,7 @@
       type:String,
       default:''
     },
-    dialog_style:{
+    cstyle:{
       type:Object,
       default(){
         return {parent:'', header:'background-color:blue;', content:''}
@@ -16,12 +16,12 @@
   })
 </script>
 <template>
-  <div id="container" v-drag :style="dialog_style.parent">
-    <div class="header" :style="dialog_style.header">
+  <div id="container" v-drag :style="cstyle.parent">
+    <div class="header" :style="cstyle.header">
       <div>{{ title }}</div>
 <!--      <img src="../../assets/popupClose.svg" alt="关闭" @click="$emit('close')">-->
     </div>
-    <div class="content" :style="dialog_style.content">
+    <div class="content" :style="cstyle.content">
       <slot></slot>
     </div>
   </div>
