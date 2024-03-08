@@ -1,19 +1,19 @@
 <script setup>
-  defineProps({
-    title:{
-      type:String,
-      default:''
-    },
-    cstyle:{
-      type:Object,
-      default(){
-        return {parent:{}, header: {}, content:{}}
-      }
+defineProps({
+  title: {
+    type: String,
+    default: ''
+  },
+  cstyle: {
+    type: Object,
+    default() {
+      return {parent: {}, header: {}, content: {}}
     }
-  })
-  defineOptions({
-    name:'PopupDialog'
-  })
+  }
+})
+defineOptions({
+  name: 'PopupDialog'
+})
 </script>
 <template>
   <div id="container" v-drag :style="cstyle.parent">
@@ -63,7 +63,8 @@
       cursor: pointer;
     }
   }
-  .content{
+
+  .content {
     width: 100%;
     height: 500px;
   }

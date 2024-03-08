@@ -1,4 +1,8 @@
+import {PopupManager} from "../globalVar/index.js";
 export default {
+    // setZIndex(el, value){
+    //     el.style.zIndex = value
+    // },
     beforeMount(el, binding) {
         //默认用户输入的数据没有问题，代码逻辑是需要检查的
         if (binding.value && binding.value.hasOwnProperty('left') && binding.value.hasOwnProperty('top')){
@@ -6,6 +10,8 @@ export default {
             el.style.top = binding.value.top + 'px'
         }
         el.style.position = 'fixed'
+        el.style.zIndex = PopupManager.nextZIndex()
+        // this.setZIndex(el, PopupManager.nextZIndex())
     },
     mounted(el, binding) {
         let down_x = 0,
@@ -52,6 +58,8 @@ export default {
         }
 
         el.addEventListener('mousedown', downEvent => {
+            // this.setZIndex(el, PopupManager.nextZIndex())
+            el.style.zIndex = PopupManager.nextZIndex()
             mouseDownEvent(downEvent, el)
             document.addEventListener('mousemove', mouseMoveCallback)
         })
@@ -62,4 +70,9 @@ export default {
             document.removeEventListener('mousemove', mouseMoveCallback)
         })
     },
+
+    updated(el){
+        el.style.zIndex = PopupManager.nextZIndex()
+        // this.setZIndex(el, PopupManager.nextZIndex())
+    }
 }
