@@ -1,6 +1,6 @@
 {
   "name": "@zqbx/vue-com",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "this is a Vue3 components Library",
   "homepage": "https://github.com/zenggpzqbx/vue-com",
   "repository": "https://github.com/zenggpzqbx/vue-com",
@@ -44,10 +44,10 @@
   "dependencies": {
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
-    "vite": "^5.0.8"
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.1.4"
   },
   "peerDependencies": {
-    "vue": "^3.3.11"
+    "vue": "^3.4.19"
   }
 }
