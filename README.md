@@ -18,7 +18,7 @@ app.use(VueCom)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursor Change on Boundary Approach</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="./dist/umd/zgp-ui.umd.cjs"></script>
+    <script src="./dist/umd/index.umd.cjs"></script>
     <link rel="stylesheet" href="./dist//umd/style.css">
     <style>
         #app {
@@ -63,7 +63,7 @@ app.use(VueCom)
 当有多个对话框弹窗的时候，保证最新弹出的在最上层，激活对话框（在对话框上按下鼠标），对话框显示在最顶层
 增加关闭按钮
 属性：title:对话框标题
-属性： cstyle:接受一个对象，{parent:'', header:'', content:''},这个属性可以在全局注册的时候指定，也可以不写。原有报错已修复。
+属性： left, top 弹窗的默认位置，header: 抬头的样式, content: 内容样式
 ```
 
 ### 指令
@@ -74,7 +74,7 @@ app.use(VueCom)
 ```
 #### drag
 ```textmate
-可以接受一个对象参数：{left, top}， 也可以不指定参数。在屏幕范围内拖动一个元素
+在屏幕范围内拖动一个元素
 ```
 #### resize
 ```textmate

@@ -25,15 +25,16 @@ const components = [PopupDialog]
 function install(app, options) {
     directives.forEach(directive => app.directive(directive.name, directive.directive))
     components.forEach(component => {
-        if (component.name === 'PopupDialog' &&  options && options.hasOwnProperty('cstyle')) {
-            app.component(component.name, defineComponent((props, ctx) => {
-                return () => {
-                    return h(component, {cstyle: options.cstyle})
-                }
-            }))
-        } else {
-            app.component(component.name, component)
-        }
+        app.component(component.name, component)
+        // if (component.name === 'PopupDialog' &&  options) {
+        //     app.component(component.name, defineComponent((props, ctx) => {
+        //         return () => {
+        //             return h(component, {...options})
+        //         }
+        //     }))
+        // } else {
+        //     app.component(component.name, component)
+        // }
     })
 }
 
