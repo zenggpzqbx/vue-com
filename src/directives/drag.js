@@ -1,25 +1,20 @@
 import {PopupManager} from "../globalVar/index.js";
+
 export default {
-    // setZIndex(el, value){
-    //     el.style.zIndex = value
-    // },
     beforeMount(el, binding) {
-        //默认用户输入的数据没有问题，代码逻辑是需要检查的
-        if (binding.value && binding.value.hasOwnProperty('left') && binding.value.hasOwnProperty('top')){
-            el.style.left = binding.value.left + 'px'
-            el.style.top = binding.value.top + 'px'
-        }
         el.style.position = 'fixed'
+        el.style.transform = 'translate(0px,0px)'
         el.style.zIndex = PopupManager.nextZIndex()
-        // this.setZIndex(el, PopupManager.nextZIndex())
     },
     mounted(el, binding) {
+        //求出一个元素的minTransX,maxTransX, minTransY,maxTransY,
+        let minTransX = el.offsetLeft
+        let maxTransX = document.documentElement.clientWidth - el.offsetLeft - el.offsetWidth
+        let minTransY = el.offsetTop
+        let maxTransY = document.documentElement.clientHeight - el.offsetTop - el.offsetHeight
+        let default_transX,default_transY
         let down_x = 0,
-            down_y = 0,
-            srcLeft = 0,
-            srcTop = 0,
-            maxLeft = 0,
-            maxTop = 0
+            down_y = 0
         document.addEventListener("selectstart", e => {
             e.preventDefault()
         })
@@ -27,30 +22,31 @@ export default {
         function mouseDownEvent(e, el) {
             down_x = e.clientX
             down_y = e.clientY
-            srcLeft = el.offsetLeft
-            srcTop = el.offsetTop
-            maxLeft = document.documentElement.clientWidth - el.offsetWidth
-            maxTop = document.documentElement.clientHeight - el.offsetHeight
+            let trans = el.style.transform.match(/\d+/g)
+            default_transX = Number(trans[0])
+            default_transY = Number(trans[1])
         }
 
         function mouseMoveEvent(e, el) {
             let move_x = e.clientX, move_y = e.clientY
             let diff_x = move_x - down_x, diff_y = move_y - down_y
-            let left = srcLeft + diff_x, top = srcTop + diff_y
-            if (left <= 0) {
-                left = 0
+            let transX = default_transX + diff_x
+            let transY = default_transY + diff_y
+            console.log(transX, transY)
+            if (transX <= minTransX){
+                transX = minTransX
             }
-            if (left >= maxLeft) {
-                left = maxLeft
+            if (transX >= maxTransX){
+                transX = maxTransX
             }
-            if (top <= 0) {
-                top = 0
+            if (transY <= minTransY){
+                transY = minTransY
             }
-            if (top >= maxTop) {
-                top = maxTop
+            if (transY >= maxTransY){
+                transY = maxTransY
             }
-            el.style.left = left + 'px'
-            el.style.top = top + 'px'
+            el.style.transform = `translate(${transX}px, ${transY}px)`
+
         }
 
         function mouseMoveCallback(e) {
@@ -58,7 +54,6 @@ export default {
         }
 
         el.addEventListener('mousedown', downEvent => {
-            // this.setZIndex(el, PopupManager.nextZIndex())
             el.style.zIndex = PopupManager.nextZIndex()
             mouseDownEvent(downEvent, el)
             document.addEventListener('mousemove', mouseMoveCallback)
@@ -70,9 +65,4 @@ export default {
             document.removeEventListener('mousemove', mouseMoveCallback)
         })
     },
-
-    updated(el){
-        el.style.zIndex = PopupManager.nextZIndex()
-        // this.setZIndex(el, PopupManager.nextZIndex())
-    }
 }
