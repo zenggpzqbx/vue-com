@@ -32,7 +32,6 @@ export default {
             let diff_x = move_x - down_x, diff_y = move_y - down_y
             let transX = default_transX + diff_x
             let transY = default_transY + diff_y
-            console.log(transX, transY)
             if (transX <= minTransX){
                 transX = minTransX
             }
