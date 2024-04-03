@@ -4,11 +4,21 @@ defineProps({
     type: String,
     default: ''
   },
-  cstyle: {
-    type: Object,
-    default() {
-      return {parent: {}, header: {}, content: {}}
-    }
+  left:{
+    type:Number,
+    default:0
+  },
+  top:{
+    type:Number,
+    default:0
+  },
+  header:{
+    type:Object,
+    default:() => ({})
+  },
+  content:{
+    type:Object,
+    default:() => ({})
   }
 })
 defineOptions({
@@ -16,12 +26,12 @@ defineOptions({
 })
 </script>
 <template>
-  <div id="container" v-drag :style="cstyle.parent">
-    <div class="header" :style="cstyle.header">
+  <div id="container" v-drag :style="{left:`${left}px`, top: `${top}px`}">
+    <div class="header" :style="header">
       <div>{{ title }}</div>
       <img src="../../assets/close.svg" alt="关闭" @click="$emit('close')">
     </div>
-    <div class="content" :style="cstyle.content">
+    <div class="content" :style="content">
       <slot></slot>
     </div>
   </div>
